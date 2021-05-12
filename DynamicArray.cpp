@@ -36,8 +36,13 @@ void DynamicArray::push_back(int elem) {
 
 void DynamicArray::insert(int elem,int pos) {
     int *tmp = new int[size+1];
+    
     for(int i = size; i > pos; i--)
         tmp[i] = arr[i -1];
+    
+    for(int i = 0; i < pos; i++)
+        tmp[i] = arr[i];
+    
     tmp[pos] = elem;
 
     size += 1;
@@ -48,8 +53,12 @@ void DynamicArray::insert(int elem,int pos) {
 
 void DynamicArray::remove(int pos) {
     int *tmp = new int[size-1];
+    
     for(int i = pos; i < size; i++)
         tmp[i] = arr[i +1];
+    
+    for(int i = 0; i < pos; i++)
+        tmp[i] = arr[i];
 
     size -= 1;
     delete []arr;
